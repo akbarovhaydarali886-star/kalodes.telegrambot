@@ -57,7 +57,10 @@ export default function About() {
           <div className="lg:col-span-6 relative">
             <div className="relative rounded-3xl overflow-hidden border border-stone-200 shadow-xl bg-white group">
               <img
-                src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=900&q=80"
+                src="/images/about.png"
+                onError={(e) => {
+                  e.currentTarget.src = "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=900&q=80";
+                }}
                 alt="Процесс работы и команда"
                 className="w-full h-80 sm:h-96 object-cover group-hover:scale-105 transition-transform duration-700"
               />

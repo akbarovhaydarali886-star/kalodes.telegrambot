@@ -96,9 +96,9 @@ export default function Hero({ onOpenOrderModal }) {
               {/* Image Preview */}
               <div className="relative h-64 sm:h-72 rounded-2xl overflow-hidden border border-stone-200 shadow-inner group">
                 <img
-                  src="https://images.unsplash.com/photo-1541888086925-ebbc31bc0d66?auto=format&fit=crop&w=900&q=80"
+                  src="/images/hero.jpg"
                   onError={(e) => {
-                    e.currentTarget.src = "https://images.unsplash.com/photo-1582260276922-263309aef8ab?auto=format&fit=crop&w=900&q=80";
+                    e.currentTarget.src = "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=900&q=80";
                   }}
                   alt="Процесс копки колодца"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
@@ -128,7 +128,7 @@ export default function Hero({ onOpenOrderModal }) {
               <div className="mt-5 p-4 rounded-xl bg-stone-50 border border-stone-200 flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center font-black text-xs">
-                    ₽ / СУМ
+                    ₽
                   </div>
                   <div>
                     <p className="text-xs text-stone-500">Хотите узнать цену?</p>

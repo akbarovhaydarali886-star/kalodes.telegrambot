@@ -9,7 +9,7 @@ const iconMap = {
   ShieldCheck,
 };
 
-export default function Services({ onSelectServiceForCalc }) {
+export default function Services({ onOrderService }) {
   return (
     <section id="services" className="py-20 lg:py-28 bg-white text-stone-900 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -78,21 +78,22 @@ export default function Services({ onSelectServiceForCalc }) {
                   <div>
                     <span className="text-xs text-stone-500 block">От (цена):</span>
                     <span className="text-xl sm:text-2xl font-black text-amber-700">
-                      {service.basePricePerMeter.toLocaleString('ru-RU')} ₽ / СУМ
+                      {service.basePricePerMeter.toLocaleString('ru-RU')} ₽
                     </span>
                     <span className="text-xs text-stone-500"> / {service.unit}</span>
                   </div>
 
                   <button
                     onClick={() => {
-                      if (onSelectServiceForCalc) {
-                        onSelectServiceForCalc(service.id);
+                      if (onOrderService) {
+                        onOrderService(service.title);
+                      } else {
+                        document.getElementById('contacts')?.scrollIntoView({ behavior: 'smooth' });
                       }
-                      document.getElementById('calculator')?.scrollIntoView({ behavior: 'smooth' });
                     }}
                     className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-white hover:bg-amber-500 hover:text-stone-950 text-stone-800 border border-stone-300 font-bold text-sm flex items-center justify-center gap-2 transition-all cursor-pointer shadow-xs"
                   >
-                    <span>Рассчитать цену</span>
+                    <span>Заказать услугу</span>
                     <ArrowRight className="w-4 h-4" />
                   </button>
                 </div>

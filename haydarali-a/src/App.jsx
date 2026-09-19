@@ -3,7 +3,6 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
 import Services from './components/Services';
-import Calculator from './components/Calculator';
 import Portfolio from './components/Portfolio';
 import WorkSteps from './components/WorkSteps';
 import FAQ from './components/FAQ';
@@ -15,18 +14,6 @@ import OrderModal from './components/OrderModal';
 export default function App() {
   const [orderModalOpen, setOrderModalOpen] = useState(false);
   const [selectedLeadData, setSelectedLeadData] = useState(null);
-  const [selectedServiceForCalc, setSelectedServiceForCalc] = useState('drinking');
-
-  // Triggered when user selects a service from the Services section to jump to Calculator
-  const handleSelectServiceForCalc = (serviceId) => {
-    setSelectedServiceForCalc(serviceId);
-  };
-
-  // Triggered from Calculator "Ushbu hisob bo'yicha buyurtma berish"
-  const handleOrderWithCalc = (calcData) => {
-    setSelectedLeadData(calcData);
-    setOrderModalOpen(true);
-  };
 
   // Triggered from Portfolio modal "Shunday quduq buyurtma qilish"
   const handleOrderProject = (project) => {
@@ -54,11 +41,10 @@ export default function App() {
       <main className="flex-grow">
         <Hero onOpenOrderModal={handleOpenOrderModal} />
         <About />
-        <Services onSelectServiceForCalc={handleSelectServiceForCalc} />
-        <Calculator 
-          selectedServiceId={selectedServiceForCalc} 
-          onOrderWithCalc={handleOrderWithCalc} 
-        />
+        <Services onOrderService={(serviceId) => {
+          setSelectedLeadData({ serviceTitle: serviceId, note: 'Услуга выбрана с сайта' });
+          setOrderModalOpen(true);
+        }} />
         <Portfolio onOrderProject={handleOrderProject} />
         <WorkSteps />
         <FAQ />
