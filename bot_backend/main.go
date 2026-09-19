@@ -3,6 +3,8 @@ package main
 import (
 	"fmt"
 	"log"
+	"net/http"
+	"os"
 	"time"
 
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
@@ -22,6 +24,19 @@ type UserState struct {
 var userStates = make(map[int64]*UserState)
 
 func main() {
+	// Render.com talabi uchun oddiy veb-server (portni band qilish uchun)
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+	}
+	go func() {
+		http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+			w.Write([]byte("Bot is running successfully on Render!"))
+		})
+		log.Printf("Web server starting on port %s", port)
+		log.Fatal(http.ListenAndServe(":"+port, nil))
+	}()
+
 	bot, err := tgbotapi.NewBotAPI(BotToken)
 	if err != nil {
 		log.Panic(err)
