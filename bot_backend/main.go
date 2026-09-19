@@ -24,19 +24,6 @@ type UserState struct {
 var userStates = make(map[int64]*UserState)
 
 func main() {
-	// Render.com talabi uchun oddiy veb-server (portni band qilish uchun)
-	port := os.Getenv("PORT")
-	if port == "" {
-		port = "8080"
-	}
-	go func() {
-		http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-			w.Write([]byte("Bot is running successfully on Render!"))
-		})
-		log.Printf("Web server starting on port %s", port)
-		log.Fatal(http.ListenAndServe(":"+port, nil))
-	}()
-
 	bot, err := tgbotapi.NewBotAPI(BotToken)
 	if err != nil {
 		log.Panic(err)
@@ -45,9 +32,27 @@ func main() {
 	bot.Debug = true
 	log.Printf("Authorized on account %s", bot.Self.UserName)
 
-	u := tgbotapi.NewUpdate(0)
-	u.Timeout = 60
-	updates := bot.GetUpdatesChan(u)
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+	}
+
+	// Render uchun maxsus Webhook o'rnatamiz (uyg'otkich saytlar kerak bo'lmasligi uchun)
+	webhookURL := "https://kalodes-bot.onrender.com/" + BotToken
+	wh, _ := tgbotapi.NewWebhook(webhookURL)
+	_, err = bot.Request(wh)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	updates := bot.ListenForWebhook("/" + BotToken)
+
+	go func() {
+		log.Printf("Web server starting on port %s", port)
+		if err := http.ListenAndServe("0.0.0.0:"+port, nil); err != nil {
+			log.Fatal(err)
+		}
+	}()
 
 	for update := range updates {
 		if update.Message == nil {
