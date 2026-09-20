@@ -11,8 +11,8 @@ import (
 )
 
 const BotToken = "8900157447:AAEbUvPbAt8pa5JNNQouRThi9hd1cLMeaJk"
-// Hamma arizalar to'g'ridan-to'g'ri egasining shaxsiy ID siga keladi
-var GroupChatID int64 = 6632017509
+// Hamma arizalar to'g'ridan-to'g'ri egasi ochgan maxsus kanalga keladi
+var ChannelUsername string = "@kalodezbot"
 
 // Mijoz holatini saqlash uchun
 type UserState struct {
@@ -56,18 +56,6 @@ func main() {
 
 	for update := range updates {
 		if update.Message == nil {
-			continue
-		}
-
-		// Agar xabar guruhdan kelsa va biz hali GroupChatID ni bilmasak
-		if update.Message.Chat.IsGroup() || update.Message.Chat.IsSuperGroup() {
-			if update.Message.Command() == "start" || update.Message.Text == "/salom" || update.Message.Text == "/start" {
-				GroupChatID = update.Message.Chat.ID
-				msg := tgbotapi.NewMessage(GroupChatID, fmt.Sprintf("✅ Baza ulandi!\n\nIltimos, ushbu ID raqamini nusxalash tugmasini bosib (yoki kopiya qilib) yordamchiga (menga) yuboring:\n`%d`", GroupChatID))
-				msg.ParseMode = "Markdown"
-				bot.Send(msg)
-				log.Printf("GURUH ID TOPILDI: %d", GroupChatID)
-			}
 			continue
 		}
 
@@ -134,15 +122,15 @@ func main() {
 		if user.Step == 2 {
 			serviceType := update.Message.Text
 			
-			// Guruhga xabar yuborish
-			if GroupChatID != 0 {
+			// Kanalga xabar yuborish
+			if ChannelUsername != "" {
 				loc, _ := time.LoadLocation("Asia/Tashkent")
 				now := time.Now().In(loc).Format("02.01.2006 15:04")
 				
 				adminText := fmt.Sprintf("🔔 <b>Новая заявка с бота!</b>\n\n📅 <b>Дата:</b> %s\n👤 <b>Имя клиента:</b> %s\n📞 <b>Телефон:</b> %s\n🚰 <b>Услуга:</b> %s\n💬 <b>Телеграм:</b> @%s",
 					now, user.Name, user.Phone, serviceType, update.Message.From.UserName)
 				
-				adminMsg := tgbotapi.NewMessage(GroupChatID, adminText)
+				adminMsg := tgbotapi.NewMessageToChannel(ChannelUsername, adminText)
 				adminMsg.ParseMode = "HTML"
 				bot.Send(adminMsg)
 			}
