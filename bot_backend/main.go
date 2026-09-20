@@ -63,7 +63,8 @@ func main() {
 		if update.Message.Chat.IsGroup() || update.Message.Chat.IsSuperGroup() {
 			if update.Message.Text == "/start" || update.Message.Text == "/salom" {
 				GroupChatID = update.Message.Chat.ID
-				msg := tgbotapi.NewMessage(GroupChatID, "✅ Гуруҳ муваффақиятли уланди! Энди сайтдан келган барча буюртмалар шу ерга тушади.")
+				msg := tgbotapi.NewMessage(GroupChatID, fmt.Sprintf("✅ Baza ulandi!\n\nIltimos, ushbu ID raqamini nusxalash tugmasini bosib (yoki kopiya qilib) yordamchiga (menga) yuboring:\n`%d`", GroupChatID))
+				msg.ParseMode = "Markdown"
 				bot.Send(msg)
 				log.Printf("GURUH ID TOPILDI: %d", GroupChatID)
 			}
