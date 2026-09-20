@@ -81,12 +81,6 @@ export default function Portfolio({ onOrderProject }) {
                   </span>
                 </div>
 
-                {/* Depth Badge */}
-                <div className="absolute bottom-3 right-4">
-                  <span className="px-3 py-1 rounded-full text-xs font-black bg-amber-500 text-stone-950 shadow-xs">
-                    {item.depth}
-                  </span>
-                </div>
               </div>
 
               {/* Card Info Content */}

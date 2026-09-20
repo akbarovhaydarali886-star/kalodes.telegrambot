@@ -65,7 +65,7 @@ export default function PortfolioModal({ item, onClose, onOrderThisProject }) {
           </div>
 
           {/* Quick Specs Grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             <div className="p-3.5 rounded-2xl bg-stone-50 border border-stone-200">
               <div className="flex items-center gap-1.5 text-xs text-stone-500 mb-1">
                 <MapPin className="w-3.5 h-3.5 text-amber-700" />
@@ -73,16 +73,6 @@ export default function PortfolioModal({ item, onClose, onOrderThisProject }) {
               </div>
               <div className="text-xs sm:text-sm font-bold text-stone-900 truncate">
                 {item.location}
-              </div>
-            </div>
-
-            <div className="p-3.5 rounded-2xl bg-stone-50 border border-stone-200">
-              <div className="flex items-center gap-1.5 text-xs text-stone-500 mb-1">
-                <Layers className="w-3.5 h-3.5 text-amber-700" />
-                <span>Глубина:</span>
-              </div>
-              <div className="text-xs sm:text-sm font-bold text-stone-900">
-                {item.depth}
               </div>
             </div>
 
@@ -116,12 +106,6 @@ export default function PortfolioModal({ item, onClose, onOrderThisProject }) {
             <p className="text-stone-700 text-sm leading-relaxed">
               {item.details}
             </p>
-            {item.ringsCount && (
-              <div className="mt-3 inline-flex items-center gap-2 text-xs font-semibold text-amber-900 bg-amber-100 border border-amber-200 px-3 py-1.5 rounded-lg">
-                <ShieldCheck className="w-4 h-4 text-amber-700" />
-                <span>Использованный материал: {item.ringsCount}</span>
-              </div>
-            )}
           </div>
 
           {/* Client Feedback Quote */}

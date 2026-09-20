@@ -2,10 +2,7 @@ import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
-import Services from './components/Services';
 import Portfolio from './components/Portfolio';
-import WorkSteps from './components/WorkSteps';
-import FAQ from './components/FAQ';
 import ContactAndLead from './components/ContactAndLead';
 import Footer from './components/Footer';
 import MobileFloatingActions from './components/MobileFloatingActions';
@@ -41,13 +38,7 @@ export default function App() {
       <main className="flex-grow">
         <Hero onOpenOrderModal={handleOpenOrderModal} />
         <About />
-        <Services onOrderService={(serviceId) => {
-          setSelectedLeadData({ serviceTitle: serviceId, note: 'Услуга выбрана с сайта' });
-          setOrderModalOpen(true);
-        }} />
         <Portfolio onOrderProject={handleOrderProject} />
-        <WorkSteps />
-        <FAQ />
         <ContactAndLead initialLeadData={selectedLeadData} />
       </main>
 

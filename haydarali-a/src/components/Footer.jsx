@@ -22,7 +22,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 pb-12 border-b border-stone-800">
           
           {/* Brand Col */}
-          <div className="lg:col-span-4 space-y-4">
+          <div className="lg:col-span-5 space-y-4">
             <a href="#hero" className="flex items-center gap-3 group">
               <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-500 to-amber-600 flex items-center justify-center shadow-md shadow-amber-500/25">
                 <Droplets className="w-6 h-6 text-stone-950" />
@@ -35,8 +35,8 @@ export default function Footer() {
               </div>
             </a>
             
-            <p className="text-sm text-stone-400 leading-relaxed">
-              Профессиональная копка, чистка, углубление колодцев и монтаж железобетонных колец. Более 10 лет опыта работы и 100% гарантия чистой воды!
+            <p className="text-sm text-stone-400 leading-relaxed max-w-sm">
+              Профессиональная копка, чистка, углубление колодцев и монтаж железобетонных колец. Более 10 лет опыта работы!
             </p>
 
             <div className="flex items-center gap-3 pt-2">
@@ -83,12 +83,6 @@ export default function Footer() {
                 <a href="#about" className="hover:text-amber-400 transition-colors">О нас</a>
               </li>
               <li>
-                <a href="#services" className="hover:text-amber-400 transition-colors">Наши услуги</a>
-              </li>
-              <li>
-                <a href="#calculator" className="hover:text-amber-400 transition-colors">Калькулятор цен</a>
-              </li>
-              <li>
                 <a href="#portfolio" className="hover:text-amber-400 transition-colors">Выполненные работы</a>
               </li>
               <li>
@@ -97,32 +91,8 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Services Links */}
-          <div className="lg:col-span-3 space-y-4">
-            <h4 className="text-white font-bold text-sm uppercase tracking-wider">
-              Виды услуг
-            </h4>
-            <ul className="space-y-2.5 text-sm">
-              <li>
-                <a href="#services" className="hover:text-amber-400 transition-colors">Питьевые колодцы</a>
-              </li>
-              <li>
-                <a href="#services" className="hover:text-amber-400 transition-colors">Углубление колодцев</a>
-              </li>
-              <li>
-                <a href="#services" className="hover:text-amber-400 transition-colors">Очистка от ила и песка</a>
-              </li>
-              <li>
-                <a href="#services" className="hover:text-amber-400 transition-colors">Монтаж ЖБ колец</a>
-              </li>
-              <li>
-                <a href="#services" className="hover:text-amber-400 transition-colors">Монтаж септиков</a>
-              </li>
-            </ul>
-          </div>
-
           {/* Contact Details */}
-          <div className="lg:col-span-2 space-y-4">
+          <div className="lg:col-span-4 space-y-4">
             <h4 className="text-white font-bold text-sm uppercase tracking-wider">
               Контакты
             </h4>
@@ -156,7 +126,6 @@ export default function Footer() {
           <p>© {new Date().getFullYear()} Quduq Master. Все права защищены.</p>
           
           <div className="flex items-center gap-6">
-            <span>Мастер: Акмаль</span>
             <button
               onClick={scrollToTop}
               className="flex items-center gap-1 hover:text-amber-400 transition-colors cursor-pointer"

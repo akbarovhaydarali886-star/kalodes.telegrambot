@@ -17,8 +17,6 @@ export default function Navbar({ onOpenOrderModal }) {
   const navLinks = [
     { label: 'Главная', href: '#hero' },
     { label: 'О нас', href: '#about' },
-    { label: 'Услуги', href: '#services' },
-    { label: 'Калькулятор', href: '#calculator' },
     { label: 'Объекты', href: '#portfolio' },
     { label: 'Контакты', href: '#contacts' },
   ];
