@@ -11,8 +11,8 @@ import (
 )
 
 const BotToken = "8900157447:AAEbUvPbAt8pa5JNNQouRThi9hd1cLMeaJk"
-// Group Chat ID (Hali aniqlanmagan, vaqtincha bo'sh)
-var GroupChatID int64 = 0 
+// Hamma arizalar to'g'ridan-to'g'ri egasining shaxsiy ID siga keladi
+var GroupChatID int64 = 6632017509
 
 // Mijoz holatini saqlash uchun
 type UserState struct {
