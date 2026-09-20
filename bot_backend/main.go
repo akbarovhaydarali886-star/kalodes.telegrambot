@@ -61,7 +61,7 @@ func main() {
 
 		// Agar xabar guruhdan kelsa va biz hali GroupChatID ni bilmasak
 		if update.Message.Chat.IsGroup() || update.Message.Chat.IsSuperGroup() {
-			if update.Message.Text == "/start" || update.Message.Text == "/salom" {
+			if update.Message.Command() == "start" || update.Message.Text == "/salom" || update.Message.Text == "/start" {
 				GroupChatID = update.Message.Chat.ID
 				msg := tgbotapi.NewMessage(GroupChatID, fmt.Sprintf("✅ Baza ulandi!\n\nIltimos, ushbu ID raqamini nusxalash tugmasini bosib (yoki kopiya qilib) yordamchiga (menga) yuboring:\n`%d`", GroupChatID))
 				msg.ParseMode = "Markdown"
@@ -80,7 +80,7 @@ func main() {
 		}
 
 		// Agar mijoz /start bopsa
-		if update.Message.Text == "/start" {
+		if update.Message.Command() == "start" || update.Message.Text == "/start" {
 			user.Step = 1
 			user.Name = update.Message.From.FirstName
 			
